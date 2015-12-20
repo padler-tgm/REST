@@ -1,23 +1,28 @@
 package hello.Data;
 
-import org.hibernate.annotations.Table;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by philippadler on 20.12.15.
  */
 
 @Entity
+@Table(name = "data")
 public class DataModell {
 
     @Id
     @GeneratedValue
     private Integer id;
-    private String text;
-    private String description;
+
+    @Column(name = "titel")
+    private String titel;
+
+    @Column(name = "beschreibung")
+    private String beschreibung;
+
+    public DataModell(){
+
+    }
 
     public Integer getId() {
         return id;
@@ -27,19 +32,19 @@ public class DataModell {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
+    public String getTitel() {
+        return titel;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setTitel(String titel) {
+        this.titel = titel;
     }
 
-    public String getDescription() {
-        return description;
+    public String getBeschreibung() {
+        return beschreibung;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
     }
 }
