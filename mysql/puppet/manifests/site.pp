@@ -4,9 +4,9 @@ class { '::mysql::server':
   restart          => true,
 }
 
-mysql::db { 'bibliothek':
-  user     => 'bibliothek',
-  password => '1234',
+mysql::db { 'REST':
+  user     => 'rest',
+  password => 'rest',
   host     => '%',
   sql      => '/vagrant/sql/dump.sql',
 }
