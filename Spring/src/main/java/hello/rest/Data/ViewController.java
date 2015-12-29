@@ -1,4 +1,4 @@
-package hello;
+package hello.rest.Data;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

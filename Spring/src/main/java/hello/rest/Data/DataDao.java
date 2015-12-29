@@ -1,4 +1,4 @@
-package hello.Data;
+package hello.rest.Data;
 
 import org.springframework.data.repository.CrudRepository;
 import javax.transaction.Transactional;

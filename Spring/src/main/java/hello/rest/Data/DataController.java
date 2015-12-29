@@ -1,4 +1,4 @@
-package hello.Data;
+package hello.rest.Data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

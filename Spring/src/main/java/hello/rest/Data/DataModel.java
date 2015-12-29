@@ -1,4 +1,4 @@
-package hello.Data;
+package hello.rest.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -55,4 +55,6 @@ public class DataModel {
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
+
+
 }

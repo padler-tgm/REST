@@ -1,0 +1,27 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getDataRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titel" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getDataResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="data" type="tns:data"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="data">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="titel" type="xs:string"/>
+            <xs:element name="beschreibung" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
