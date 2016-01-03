@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Adler/Karic</h1>
+        <p>AKWiki</p>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-xs-6 col-sm-8">
+            <form action="" method="get">
+                <div class="input-group">
+                    <input type="text" name="titel" class="form-control" placeholder="Search for..." />
+                    <input type="hidden" name="site" value="1" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Go!</button>
+                    </span>
+                </div><!-- /input-group -->
+            </form>
+            <a href="/create/"><button type="button" class="btn btn-success">Eintrag hinzufügen</button></a>
+            <nav>
+                <ul class="pagination">
+                    <li th:if="${site} != 1"><a th:href="@{/read/(site=${(site)-1}, titel=${titel})}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    <li th:each="id : ${data}" th:for="${'id' + idStat.index}"><a th:href="@{/read/(site=${idStat.index+1}, titel=${titel})}" ><div th:text="${idStat.index+1}" /></a></li>
+                    <li th:if="${site} != ${pagination}"><a th:href="@{/read/(site=${(site)+1}, titel=${titel})}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+
+                </ul>
+            </nav>
+            <table class="table table-hover">
+                <tr>
+                    <th>Titel</th>
+                    <th>Beschreibung</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <th:block th:each="data : ${data1}">
+                    <tr>
+                        <td><div th:text="${data.getTitel()}" /></td>
+                        <td><div th:text="${data.getBeschreibung()}" /></td>
+                        <td><a th:href="@{/update/{id}(id=${data.getId()})}"><button type="button" class="btn btn-info">Bearbeiten</button></a></td>
+                        <td><a th:href="@{/delete/{id}(id=${data.getId()})}"><button type="button" class="btn btn-danger">Löschen</button></a></td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

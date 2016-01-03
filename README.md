@@ -44,3 +44,15 @@ http://www.ibm.com/developerworks/java/library/j-jws8/index.html
 
 REST:
 https://github.com/netgloo/spring-boot-samples/tree/master/spring-boot-mysql-springdatajpa-hibernate
+http://www.thymeleaf.org/doc/articles/springmvcaccessdata.html
+https://spring.io/guides/gs/producing-web-service/
+
+Errors:
+http://stackoverflow.com/questions/20713522/missing-uri-template-variable-studentid-for-method-parameter-type-java-lang-i
+
+
+READ:
+http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
+
+SOAP-Client:
+http://stackoverflow.com/questions/15948927/working-soap-client-example

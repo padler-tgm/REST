@@ -9,5 +9,6 @@ import javax.transaction.Transactional;
 @Transactional
 public interface DataDao extends CrudRepository<DataModel, Long>{
 
-    public DataModel findById(long id);
+    public Iterable<DataModel> findByTitel(String titel);
+    public Iterable<DataModel> findAll();
 }
