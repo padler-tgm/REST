@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.List;
 
 
 /**
@@ -42,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
 public class GetDataResponse {
 
     @XmlElement(required = true)
-    protected Data data;
+    protected List<Data> data;
 
     /**
      * Ruft den Wert der data-Eigenschaft ab.
@@ -52,7 +53,7 @@ public class GetDataResponse {
      *     {@link Data }
      *     
      */
-    public Data getData() {
+    public List<Data> getData() {
         return data;
     }
 
@@ -64,7 +65,7 @@ public class GetDataResponse {
      *     {@link Data }
      *     
      */
-    public void setData(Data value) {
+    public void setData(List<Data> value) {
         this.data = value;
     }
 

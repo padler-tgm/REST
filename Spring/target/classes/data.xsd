@@ -12,7 +12,7 @@
     <xs:element name="getDataResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="data" type="tns:data"/>
+                <xs:element name="data" maxOccurs="unbounded" minOccurs="0" type="tns:data"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

@@ -5,22 +5,27 @@ import javax.xml.soap.*;
 public class SOAPClient {
 
     public static void main(String args[]) throws Exception {
+        CLI cli = new CLI();
+        cli.addArguments(args);
         // Create SOAP Connection
         SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
         SOAPConnection soapConnection = soapConnectionFactory.createConnection();
 
         // Send SOAP Message to SOAP Server
-        String url = "http://localhost:8080/ws";
-        SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(), url);
+        try {
+            String url = "http://" + cli.value("hostname") + ":" + cli.value("port") + "/ws";
+            SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(cli.value("titel")), url);
 
-        // print SOAP Response
-        System.out.print("Response SOAP Message:");
-        soapResponse.writeTo(System.out);
+            // print SOAP Response
+            cli.output(soapResponse);
+        }catch (Exception e){
+
+        }
 
         soapConnection.close();
     }
 
-    private static SOAPMessage createSOAPRequest() throws Exception {
+    private static SOAPMessage createSOAPRequest(String titel) throws Exception {
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
         SOAPPart soapPart = soapMessage.getSOAPPart();
@@ -48,7 +53,7 @@ public class SOAPClient {
         SOAPBody soapBody = envelope.getBody();
         SOAPElement soapBodyElem = soapBody.addChildElement("getDataRequest", "gs");
         SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("titel", "gs");
-        soapBodyElem1.addTextNode("x");
+        soapBodyElem1.addTextNode(titel);
 
         MimeHeaders headers = soapMessage.getMimeHeaders();
         headers.addHeader("SOAPAction", serverURI  + "getDataRequest");
