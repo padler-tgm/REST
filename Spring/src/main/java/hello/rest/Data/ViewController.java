@@ -22,7 +22,7 @@ public class ViewController {
 
     @RequestMapping(value = "/read", method = RequestMethod.GET, produces = "text/html")
     public String displayDataRecord(@RequestParam(value="titel") String titel, @RequestParam(value="site") int site, Model model) {
-        Integer anzahl = 3;
+        Integer anzahl = 10;
         List<DataModel> data = dataController.read(titel).getBody();
         List<DataModel> data1 = null;
         int bis = 0;

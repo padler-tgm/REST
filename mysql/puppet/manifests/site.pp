@@ -8,5 +8,5 @@ mysql::db { 'REST':
   user     => 'rest',
   password => 'rest',
   host     => '%',
-  sql      => '/vagrant/sql/dump.sql',
+  sql      => '/vagrant/sql/rest.sql',
 }
