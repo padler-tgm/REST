@@ -17,12 +17,19 @@ import java.util.List;
 
 
 /**
- * Created by philippadler on 20.12.15.
+ * Controller der im Hintergrund fungiert
+ * @author Philipp Adler
+ * @version 20.12.15
  */
 @Controller
 public class DataController {
 
-
+    /**
+     * Create-Methode nimmt Titel und Beschreibung entgegen
+     * @param titel Titel des DataModells
+     * @param beschreibung Beschreibung des DataModells
+     * @return ob successful oder error
+     */
     @RequestMapping(value = "/create")
     @ResponseBody
     public String create(@RequestParam(value="titel", defaultValue = "") String titel, @RequestParam(value="beschreibung", defaultValue = "") String beschreibung){
@@ -40,6 +47,11 @@ public class DataController {
         }
     }
 
+    /**
+     * Read-Methode liefert DataModell anhand der Id zurueck
+     * @param id die Id des DataModells
+     * @return das DataModell mit der uebergebenen Id
+     */
     @RequestMapping("/update/{id}")
     @ResponseBody
     public ResponseEntity<DataModel> read(@PathVariable long id){
@@ -47,6 +59,13 @@ public class DataController {
         return new ResponseEntity<DataModel>(data, HttpStatus.OK);
     }
 
+    /**
+     * Update-Methode uebernimmt die neuen Eigenschaften
+     * @param id die Id es DataModells
+     * @param titel neuer Titel
+     * @param beschreibung neue Beschreibung
+     * @return das geaenderte DataModell
+     */
     @RequestMapping("/update")
     @ResponseBody
     public ResponseEntity<DataModel> update(@RequestParam(value="id") long id, @RequestParam(value="titel") String titel, @RequestParam(value="beschreibung") String beschreibung){
@@ -57,6 +76,11 @@ public class DataController {
         return new ResponseEntity<DataModel>(data, HttpStatus.OK);
     }
 
+    /**
+     * Delete-Methode loescht das DataModell mit der uebergebenen Id
+     * @param id das Objekt welches geloescht werden soll
+     * @return ob successful oder error
+     */
     @RequestMapping("/delete")
     @ResponseBody
     public String delete(@PathVariable long id) {
@@ -69,6 +93,11 @@ public class DataController {
         return "Data succesfully deleted!";
     }
 
+    /**
+     * Read-Methode fuer alle Elemente die den uebergebenen Titel beinhalten
+     * @param titel der gesuchte Titel
+     * @return die gefundenen Ergebnisse
+     */
     @RequestMapping(value = "/read")
     public ResponseEntity<List<DataModel>> read(@RequestParam(value="titel") String titel) {
         ArrayList<DataModel> list = new ArrayList<>();
@@ -79,6 +108,10 @@ public class DataController {
         return new ResponseEntity<List<DataModel>>(list, HttpStatus.OK);
     }
 
+    /**
+     * Liefert alle Objekte
+     * @return alle Objekte
+     */
     @RequestMapping(value = "/")
     public ResponseEntity<List<DataModel>> readall() {
         ArrayList<DataModel> list = new ArrayList<>();

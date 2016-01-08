@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by philippadler on 27.12.15.
+ * Controller der im Vordergrund fungiert
+ * @author Philipp Adler
+ * @version 27.12.15
  */
 @Controller
 public class ViewController {
@@ -19,7 +21,13 @@ public class ViewController {
         return "index";
     }
 
-
+    /**
+     * Liefert die gesuchten Objekte
+     * @param titel gesuchte Titel
+     * @param site pagination site
+     * @param model uebertraegt die Daten an die html Files
+     * @return liefert alle Objekte mit dem uebergebenen Titel
+     */
     @RequestMapping(value = "/read", method = RequestMethod.GET, produces = "text/html")
     public String displayDataRecord(@RequestParam(value="titel") String titel, @RequestParam(value="site") int site, Model model) {
         Integer anzahl = 10;
@@ -55,6 +63,12 @@ public class ViewController {
         return "read";
     }
 
+    /**
+     * Read-Methode liefert DataModell anhand der Id zurueck
+     * @param id die Id des DataModells
+     * @param model uebertraegt die Daten an die html Files
+     * @return das DataModell mit der uebergebenen Id
+     */
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET, produces = "text/html")
     public String readDataRecord(@PathVariable long id, Model model) {
         DataModel data = dataController.read(id).getBody();
@@ -68,6 +82,14 @@ public class ViewController {
         return "update";
     }
 
+    /**
+     * Update-Methode uebernimmt die neuen Eigenschaften
+     * @param id die Id es DataModells
+     * @param titel neuer Titel
+     * @param beschreibung neue Beschreibung
+     * @param model uebertraegt die Daten an die html Files
+     * @return das geaenderte DataModell
+     */
     @RequestMapping(value = "/update/", method = RequestMethod.GET, produces = "text/html")
     public String updateDataRecord(@RequestParam(value="id") long id, @RequestParam(value="titel") String titel, @RequestParam(value="beschreibung") String beschreibung, Model model) {
         DataModel data = dataController.update(id, titel, beschreibung).getBody();
@@ -81,6 +103,13 @@ public class ViewController {
         return "index";
     }
 
+    /**
+     * Create-Methode nimmt Titel und Beschreibung entgegen
+     * @param titel Titel des DataModells
+     * @param beschreibung Beschreibung des DataModells
+     * @param model uebertraegt die Daten an die html Files
+     * @return ob successful oder error
+     */
     @RequestMapping(value = "/create/", method = RequestMethod.GET, produces = "text/html")
     public String createDataRecord(@RequestParam(value="titel", defaultValue = "") String titel, @RequestParam(value="beschreibung", defaultValue = "") String beschreibung, Model model) {
         if(!(titel.equals("") || beschreibung.equals(""))) {
@@ -91,6 +120,12 @@ public class ViewController {
         }
     }
 
+    /**
+     * Delete-Methode loescht das DataModell mit der uebergebenen Id
+     * @param id das Objekt welches geloescht werden soll
+     * @param model uebertraegt die Daten an die html Files
+     * @return ob successful oder error
+     */
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET, produces = "text/html")
     public String deleteDataRecord(@PathVariable long id, Model model) {
         dataController.delete(id);

@@ -1,7 +1,5 @@
 package hello.soa;
 
-
-
 import io.spring.guides.gs_producing_web_service.GetDataRequest;
 import io.spring.guides.gs_producing_web_service.GetDataResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +8,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+/**
+ * https://spring.io/guides/gs/producing-web-service/
+ */
 
 @Endpoint
 public class DataEndpoint {

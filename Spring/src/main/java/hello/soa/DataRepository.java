@@ -13,6 +13,10 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * https://spring.io/guides/gs/producing-web-service/
+ */
+
+/**
  * Created by philippadler on 28.12.15.
  */
 

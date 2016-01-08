@@ -2,8 +2,22 @@ package hello.soapclient;
 
 import javax.xml.soap.*;
 
-public class SOAPClient {
 
+/**
+ * http://stackoverflow.com/questions/15948927/working-soap-client-example
+ */
+
+/**
+ * SOAP-Client mit Commandline UI
+ * @author Adin Karic
+ * @version 20-01-04
+ */
+public class SOAPClient {
+    /**
+     * main nimmt die Usereingabe entgegen
+     * @param args Hostname, Port, Titel, Dateiname
+     * @throws Exception falls keine Verbindung aufgebaut werden konnte
+     */
     public static void main(String args[]) throws Exception {
         CLI cli = new CLI();
         cli.addArguments(args);
@@ -25,6 +39,12 @@ public class SOAPClient {
         soapConnection.close();
     }
 
+    /**
+     * Erzeugt einen Request
+     * @param titel der Titel im Request nach dem dann gesucht wird
+     * @return den Request
+     * @throws Exception
+     */
     private static SOAPMessage createSOAPRequest(String titel) throws Exception {
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
